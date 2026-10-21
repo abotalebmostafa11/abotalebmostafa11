@@ -70,38 +70,69 @@ def orbit_art(t):
 def hero(theme):
     t = THEMES[theme]
     body = (
-        f'<rect width="1280" height="430" rx="20" fill="{t["bg"]}"/>'
-        f'<rect x="1" y="1" width="1278" height="428" rx="19" fill="none" stroke="{t["line"]}"/>'
+        f'<rect width="1280" height="500" rx="20" fill="{t["bg"]}"/>'
+        f'<rect x="1" y="1" width="1278" height="498" rx="19" fill="none" stroke="{t["line"]}"/>'
         f'<path d="M48 50H92" stroke="{t["accent"]}" stroke-width="4"/>'
         + text(108, 55, "RESEARCH  /  SOFTWARE  /  TEACHING", 14, t["accent"], 600, MONO)
         + text(48, 157, "Mostafa", 65, t["text"], 700)
         + text(48, 229, "Abotaleb", 65, t["text"], 700)
-        + text(50, 281, "Earth observation. Forecasting. Scientific computing.", 23, t["muted"])
-        + f'<path d="M48 324H782" stroke="{t["line"]}"/>'
-        + text(50, 362, "YUGRA STATE UNIVERSITY", 14, t["text"], 600, MONO)
-        + text(50, 389, "Khanty-Mansiysk, Russia", 15, t["muted"])
-        + orbit_art(t)
+        + text(50, 281, "Associate Professor", 25, t["accent"], 600)
+        + text(50, 314, "Head of the Laboratory of Integrated Digital Solutions", 21, t["text"])
+        + text(50, 355, "AI. Earth observation. Time-series forecasting.", 22, t["muted"])
+        + f'<path d="M48 387H800" stroke="{t["line"]}"/>'
+        + text(50, 421, "YUGRA STATE UNIVERSITY", 16, t["text"], 600, MONO)
+        + text(50, 448, "Engineering School of Digital Technologies", 16, t["muted"])
+        + text(50, 475, "16, Chekhova Street · Khanty-Mansiysk 628012 · Russia", 16, t["muted"])
+        + '<g transform="translate(0 35)">' + orbit_art(t) + '</g>'
     )
-    return svg(1280, 430, "Mostafa Abotaleb", "Research, software and teaching. Earth observation, forecasting and scientific computing. Yugra State University, Khanty-Mansiysk, Russia.", body)
+    return svg(1280, 500, "Mostafa Abotaleb", "Associate Professor and Head of the Laboratory of Integrated Digital Solutions. Engineering School of Digital Technologies, Yugra State University. 16, Chekhova Street, Khanty-Mansiysk 628012, Russia.", body)
 
 
 def mobile_hero(theme):
     t = THEMES[theme]
     body = (
-        f'<rect width="720" height="460" rx="20" fill="{t["bg"]}"/>'
-        f'<rect x="1" y="1" width="718" height="458" rx="19" fill="none" stroke="{t["line"]}"/>'
+        f'<rect width="720" height="620" rx="20" fill="{t["bg"]}"/>'
+        f'<rect x="1" y="1" width="718" height="618" rx="19" fill="none" stroke="{t["line"]}"/>'
         f'<path d="M40 44H67" stroke="{t["accent"]}" stroke-width="4"/>'
         + text(82, 49, "RESEARCH / SOFTWARE / TEACHING", 14, t["accent"], 600, MONO)
         + text(38, 143, "Mostafa", 62, t["text"], 700)
         + text(38, 214, "Abotaleb", 62, t["text"], 700)
-        + text(40, 273, "Earth observation.", 25, t["muted"])
-        + text(40, 311, "Forecasting. Scientific computing.", 25, t["muted"])
-        + f'<path d="M40 348H680" stroke="{t["line"]}"/>'
-        + text(40, 388, "YUGRA STATE UNIVERSITY", 17, t["text"], 600, MONO)
-        + text(40, 420, "Khanty-Mansiysk, Russia", 19, t["muted"])
+        + text(40, 276, "Associate Professor", 28, t["accent"], 600)
+        + text(40, 319, "Head of the Laboratory", 25, t["text"])
+        + text(40, 354, "of Integrated Digital Solutions", 25, t["text"])
+        + text(40, 402, "AI. Earth observation. Forecasting.", 23, t["muted"])
+        + f'<path d="M40 440H680" stroke="{t["line"]}"/>'
+        + text(40, 483, "YUGRA STATE UNIVERSITY", 19, t["text"], 600, MONO)
+        + text(40, 516, "Engineering School of Digital Technologies", 19, t["muted"])
+        + text(40, 552, "Khanty-Mansiysk, Russia", 20, t["muted"])
+        + text(40, 586, "16, Chekhova Street · 628012", 19, t["muted"])
         + '<g transform="translate(55 55) scale(.5)">' + orbit_art(t) + '</g>'
     )
-    return svg(720, 460, "Mostafa Abotaleb", "Earth observation, forecasting and scientific computing. Yugra State University, Khanty-Mansiysk, Russia.", body)
+    return svg(720, 620, "Mostafa Abotaleb", "Associate Professor and Head of the Laboratory of Integrated Digital Solutions. Yugra State University, 16, Chekhova Street, Khanty-Mansiysk 628012, Russia.", body)
+
+
+RESEARCH_PROFILES = [
+    ("scopus", "Scopus", "Sc", "gold"),
+    ("web-of-science", "Web of Science", "W", "blue"),
+    ("google-scholar", "Google Scholar", "G", "blue"),
+    ("researchgate", "ResearchGate", "RG", "accent"),
+    ("researchid", "ResearchID.co", "ID", "accent"),
+    ("elibrary", "eLIBRARY.RU", "eL", "gold"),
+]
+
+
+def profile_button(profile, theme):
+    slug, label, initials, accent = profile
+    t = THEMES[theme]
+    c = t[accent]
+    body = (
+        f'<rect x="1" y="1" width="238" height="64" rx="12" fill="{t["bg"]}" stroke="{t["line"]}"/>'
+        f'<circle cx="31" cy="33" r="16" fill="{t["wash"]}"/>'
+        + text(31, 38, initials, 13, c, 700, FONT, 'text-anchor="middle"')
+        + text(59, 39, label, 18, t["text"], 600)
+        + f'<path d="M215 27h8v8M223 27l-9 9" fill="none" stroke="{c}" stroke-width="1.5"/>'
+    )
+    return svg(240, 66, label, f"Open Mostafa Abotaleb's {label} profile.", body)
 
 
 def motif(kind, t, color):
@@ -174,7 +205,9 @@ def main():
         (ASSETS / f"hero-mobile-{theme}.svg").write_text(mobile_hero(theme), encoding="utf-8")
         for project in PROJECTS:
             (ASSETS / f"{project[0]}-{theme}.svg").write_text(card(project, theme), encoding="utf-8")
-    print("Built 16 self-contained SVG assets.")
+        for profile in RESEARCH_PROFILES:
+            (ASSETS / f"profile-{profile[0]}-{theme}.svg").write_text(profile_button(profile, theme), encoding="utf-8")
+    print("Built 28 self-contained SVG assets.")
 
 
 if __name__ == "__main__":
