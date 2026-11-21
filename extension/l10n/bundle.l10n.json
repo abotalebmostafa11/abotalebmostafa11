@@ -1,0 +1,19 @@
+{
+  "Open a C++ source file or type a C++ program in a new tab.": "Open a C++ source file or type a C++ program in a new tab.",
+  "C++ Start could not run the program. {0}": "C++ Start could not run the program. {0}",
+  "Save a new UTF-8 C++ file": "Save a new UTF-8 C++ file",
+  "Choose a local C++ source file.": "Choose a local C++ source file.",
+  "That file already exists. Choose a new filename.": "That file already exists. Choose a new filename.",
+  "Save UTF-8 copy": "Save UTF-8 copy",
+  "Running the text shown in the editor. This file uses {0}. Save a UTF-8 copy to keep all letters on disk.": "Running the text shown in the editor. This file uses {0}. Save a UTF-8 copy to keep all letters on disk.",
+  "The source contains a string of question marks. If you expected letters there, restore or retype the text before saving it as UTF-8.": "The source contains a string of question marks. If you expected letters there, restore or retype the text before saving it as UTF-8.",
+  "Run C++ (UTF-8)": "Run C++ (UTF-8)",
+  "Compile the current C++ file and show Unicode input and output": "Compile the current C++ file and show Unicode input and output",
+  "Trace issue": "Trace issue",
+  "Open issue log": "Open issue log",
+  "No issue log is available yet.": "No issue log is available yet.",
+  "Open a trusted local folder to run its C++ programs.": "Open a trusted local folder to run its C++ programs.",
+  "Open a trusted local folder to set up C++ tools.": "Open a trusted local folder to set up C++ tools.",
+  "The C++ compiler is ready. Open a .cpp file and choose Run C++ (UTF-8).": "The C++ compiler is ready. Open a .cpp file and choose Run C++ (UTF-8).",
+  "C++ compiler setup failed. {0}": "C++ compiler setup failed. {0}"
+}

@@ -1,0 +1,19 @@
+{
+  "Open a C++ source file or type a C++ program in a new tab.": "Откройте исходный файл C++ или введите программу C++ в новой вкладке.",
+  "C++ Start could not run the program. {0}": "Не удалось выполнить команду C++ Start. {0}",
+  "Save a new UTF-8 C++ file": "Сохранить новый файл C++ в UTF-8",
+  "Choose a local C++ source file.": "Выберите локальный файл исходного кода C++.",
+  "That file already exists. Choose a new filename.": "Такой файл уже существует. Выберите новое имя.",
+  "Save UTF-8 copy": "Сохранить копию в UTF-8",
+  "Running the text shown in the editor. This file uses {0}. Save a UTF-8 copy to keep all letters on disk.": "Запускается текст из редактора. Кодировка файла — {0}. Сохраните копию в UTF-8, чтобы записать на диск все буквы.",
+  "The source contains a string of question marks. If you expected letters there, restore or retype the text before saving it as UTF-8.": "В строке исходного кода несколько знаков вопроса подряд. Если там должны быть буквы, восстановите или введите текст заново и сохраните его в UTF-8.",
+  "Run C++ (UTF-8)": "Запустить C++ (UTF-8)",
+  "Compile the current C++ file and show Unicode input and output": "Скомпилировать текущий файл C++ и открыть окно ввода и вывода Юникода",
+  "Trace issue": "Перейти к ошибке",
+  "Open issue log": "Открыть журнал ошибок",
+  "No issue log is available yet.": "Журнал ошибок пока пуст.",
+  "Open a trusted local folder to run its C++ programs.": "Откройте доверенную локальную папку, чтобы запустить её программы C++.",
+  "Open a trusted local folder to set up C++ tools.": "Чтобы настроить инструменты C++, откройте доверенную локальную папку.",
+  "The C++ compiler is ready. Open a .cpp file and choose Run C++ (UTF-8).": "Компилятор C++ готов. Откройте файл .cpp и выберите «Запустить C++ (UTF-8)».",
+  "C++ compiler setup failed. {0}": "Не удалось настроить компилятор C++. {0}"
+}

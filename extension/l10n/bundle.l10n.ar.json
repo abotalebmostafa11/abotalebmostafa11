@@ -1,0 +1,19 @@
+{
+  "Open a C++ source file or type a C++ program in a new tab.": "افتح ملف C++ أو اكتب برنامج C++ في علامة تبويب جديدة.",
+  "C++ Start could not run the program. {0}": "تعذّر على C++ Start تشغيل البرنامج. {0}",
+  "Save a new UTF-8 C++ file": "حفظ ملف C++ جديد بترميز UTF-8",
+  "Choose a local C++ source file.": "اختر ملف مصدر C++ محليًا.",
+  "That file already exists. Choose a new filename.": "هذا الملف موجود بالفعل. اختر اسمًا جديدًا.",
+  "Save UTF-8 copy": "حفظ نسخة بترميز UTF-8",
+  "Running the text shown in the editor. This file uses {0}. Save a UTF-8 copy to keep all letters on disk.": "يجري تشغيل النص الظاهر في المحرر. يستخدم الملف الترميز {0}. احفظ نسخة بترميز UTF-8 للاحتفاظ بجميع الحروف على القرص.",
+  "The source contains a string of question marks. If you expected letters there, restore or retype the text before saving it as UTF-8.": "يحتوي الملف على سلسلة من علامات الاستفهام. إذا كنت تتوقع حروفًا، فاستعِد النص أو أعد كتابته ثم احفظه بترميز UTF-8.",
+  "Run C++ (UTF-8)": "تشغيل C++ ‏(UTF-8)",
+  "Compile the current C++ file and show Unicode input and output": "ترجمة ملف C++ الحالي وعرض الإدخال والإخراج بترميز Unicode",
+  "Trace issue": "تتبّع الخطأ",
+  "Open issue log": "فتح سجلّ الأخطاء",
+  "No issue log is available yet.": "لا يوجد سجلّ أخطاء حتى الآن.",
+  "Open a trusted local folder to run its C++ programs.": "افتح مجلدًا محليًا موثوقًا لتشغيل برامج C++ فيه.",
+  "Open a trusted local folder to set up C++ tools.": "افتح مجلدًا محليًا موثوقًا لإعداد أدوات C++.",
+  "The C++ compiler is ready. Open a .cpp file and choose Run C++ (UTF-8).": "مترجم C++ جاهز. افتح ملف ‎.cpp واختر تشغيل C++ ‏(UTF-8).",
+  "C++ compiler setup failed. {0}": "تعذّر إعداد مترجم C++. {0}"
+}

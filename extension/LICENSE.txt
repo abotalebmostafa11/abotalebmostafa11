@@ -1,0 +1,11 @@
+C++ Start
+
+Copyright © 2026 Mostafa Abotaleb. All rights reserved in the original C++ Start software and documentation.
+
+Created and designed by Associate Professor Mostafa Abotaleb, Yugra State University.
+
+The bundled Noto Sans Bengali font is copyright 2022 The Noto Project Authors. It is distributed under the SIL Open Font License, Version 1.1. The full license and attribution are included in fonts/OFL.txt.
+
+The Yugra State University name and logos belong to their respective rights holder. Their inclusion does not grant rights to use those marks. The C++ Start software mark is separate from the university marks.
+
+LLVM-MinGW and Apple Command Line Tools are provided by their respective distributors and are subject to their own licenses.

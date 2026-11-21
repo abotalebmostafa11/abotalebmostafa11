@@ -1,0 +1,193 @@
+{
+  "name": "cppstart-run",
+  "displayName": "C++ Start",
+  "description": "%description%",
+  "version": "2.2.0",
+  "publisher": "cppstart",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Education"
+  ],
+  "activationEvents": [
+    "onLanguage:cpp",
+    "onLanguage:plaintext",
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "l10n": "./l10n",
+  "extensionKind": [
+    "ui"
+  ],
+  "capabilities": {
+    "virtualWorkspaces": false,
+    "untrustedWorkspaces": {
+      "supported": false
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "cppstart.setup",
+        "category": "C++ Start",
+        "title": "%setup%"
+      },
+      {
+        "command": "cppstart.run",
+        "title": "%run%",
+        "category": "C++ Start",
+        "shortTitle": "%run%"
+      },
+      {
+        "command": "cppstart.runTerminal",
+        "title": "%terminal%",
+        "category": "C++ Start",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "cppstart.runOrDebug",
+        "title": "%f5%",
+        "category": "C++ Start"
+      },
+      {
+        "command": "cppstart.newFile",
+        "category": "C++ Start",
+        "title": "%new%"
+      },
+      {
+        "command": "cppstart.saveCopy",
+        "category": "C++ Start",
+        "title": "%copy%"
+      },
+      {
+        "command": "cppstart.runCode",
+        "title": "Run Code",
+        "icon": "$(play)"
+      },
+      {
+        "command": "cppstart.traceIssue",
+        "title": "%trace%",
+        "category": "C++ Start"
+      },
+      {
+        "command": "cppstart.openIssueLog",
+        "title": "%log%",
+        "category": "C++ Start"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "cppstart.runOrDebug",
+        "key": "f5",
+        "when": "(isWindows || isMac) && !remoteName && !virtualWorkspace && isWorkspaceTrusted && ((resourceScheme == file && (resourceExtname =~ /\\.(cpp|cxx|cc|cp|c\\+\\+|ixx|cppm)$/i || resourceExtname == .C)) || (resourceScheme == untitled && (editorLangId == cpp || cppstart.untitledCpp))) && editorTextFocus && !inDebugMode"
+      },
+      {
+        "command": "cppstart.runCode",
+        "key": "ctrl+alt+n",
+        "when": "editorTextFocus && cppstart.codeRunnerShortcut",
+        "mac": "ctrl+alt+n"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "cppstart.run",
+          "when": "(isWindows || isMac) && !remoteName && !virtualWorkspace && isWorkspaceTrusted && ((resourceScheme == file && (resourceExtname =~ /\\.(cpp|cxx|cc|cp|c\\+\\+|ixx|cppm)$/i || resourceExtname == .C)) || (resourceScheme == untitled && (editorLangId == cpp || cppstart.untitledCpp)))",
+          "group": "navigation@-1000"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "cppstart.run",
+          "when": "(isWindows || isMac) && !remoteName && !virtualWorkspace && isWorkspaceTrusted && ((resourceScheme == file && (resourceExtname =~ /\\.(cpp|cxx|cc|cp|c\\+\\+|ixx|cppm)$/i || resourceExtname == .C)) || (resourceScheme == untitled && (editorLangId == cpp || cppstart.untitledCpp)))"
+        },
+        {
+          "command": "cppstart.runTerminal",
+          "when": "(isWindows || isMac) && !remoteName && !virtualWorkspace && isWorkspaceTrusted && ((resourceScheme == file && (resourceExtname =~ /\\.(cpp|cxx|cc|cp|c\\+\\+|ixx|cppm)$/i || resourceExtname == .C)) || (resourceScheme == untitled && (editorLangId == cpp || cppstart.untitledCpp)))"
+        },
+        {
+          "command": "cppstart.runOrDebug",
+          "when": "false"
+        },
+        {
+          "command": "cppstart.newFile",
+          "when": "(isWindows || isMac) && !remoteName && !virtualWorkspace && isWorkspaceTrusted"
+        },
+        {
+          "command": "cppstart.saveCopy",
+          "when": "(isWindows || isMac) && !remoteName && !virtualWorkspace && isWorkspaceTrusted && ((resourceScheme == file && (resourceExtname =~ /\\.(cpp|cxx|cc|cp|c\\+\\+|ixx|cppm)$/i || resourceExtname == .C)) || (resourceScheme == untitled && (editorLangId == cpp || cppstart.untitledCpp)))"
+        },
+        {
+          "command": "cppstart.runCode",
+          "when": "false"
+        },
+        {
+          "command": "cppstart.traceIssue",
+          "when": "(isWindows || isMac) && !remoteName && isWorkspaceTrusted"
+        },
+        {
+          "command": "cppstart.openIssueLog",
+          "when": "(isWindows || isMac) && !remoteName && isWorkspaceTrusted"
+        },
+        {
+          "command": "cppstart.setup",
+          "when": "(isWindows || isMac) && !remoteName && !virtualWorkspace && isWorkspaceTrusted"
+        }
+      ],
+      "editor/title/run": [
+        {
+          "when": "cppstart.codeRunnerTitle && !config.code-runner.showRunIconInEditorTitleMenu",
+          "command": "cppstart.runCode",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "when": "!inOutput && cppstart.codeRunnerContext && !config.code-runner.showRunCommandInEditorContextMenu",
+          "command": "cppstart.runCode",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configurationDefaults": {
+      "[cpp]": {
+        "files.encoding": "utf8"
+      },
+      "code-runner.showRunIconInEditorTitleMenu": false,
+      "code-runner.showRunCommandInEditorContextMenu": false
+    }
+  },
+  "icon": "brand/app.png",
+  "author": {
+    "name": "Associate Professor Mostafa Abotaleb"
+  },
+  "galleryBanner": {
+    "color": "#153442",
+    "theme": "dark"
+  },
+  "keywords": [
+    "C++",
+    "C++20",
+    "clang",
+    "compiler",
+    "UTF-8",
+    "Unicode",
+    "Bengali",
+    "Bangla",
+    "Arabic",
+    "Russian",
+    "multilingual",
+    "education",
+    "Windows",
+    "macOS"
+  ],
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abotalebmostafa11/abotalebmostafa11.git",
+    "directory": "extension"
+  },
+  "homepage": "https://github.com/abotalebmostafa11/abotalebmostafa11/tree/cppstart-vscode"
+}

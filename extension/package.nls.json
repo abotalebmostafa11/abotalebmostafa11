@@ -1,0 +1,11 @@
+{
+  "description": "Compile and run C++20 with UTF-8 input, Bengali, Arabic, English and Russian output, and source-level error navigation.",
+  "run": "Run C++ (UTF-8)",
+  "terminal": "Run C++ in Terminal",
+  "f5": "Run or Debug C++ File",
+  "new": "New UTF-8 C++ File",
+  "copy": "Save C++ File as UTF-8 Copy",
+  "trace": "Trace issue",
+  "log": "Open issue log",
+  "setup": "Set Up C++ Compiler"
+}

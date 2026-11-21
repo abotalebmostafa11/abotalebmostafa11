@@ -1,0 +1,19 @@
+{
+  "Open a C++ source file or type a C++ program in a new tab.": "একটি C++ সোর্স ফাইল খুলুন বা নতুন ট্যাবে একটি C++ প্রোগ্রাম লিখুন।",
+  "C++ Start could not run the program. {0}": "C++ Start প্রোগ্রামটি চালাতে পারেনি। {0}",
+  "Save a new UTF-8 C++ file": "নতুন UTF-8 C++ ফাইল সংরক্ষণ করুন",
+  "Choose a local C++ source file.": "একটি স্থানীয় C++ সোর্স ফাইল বেছে নিন।",
+  "That file already exists. Choose a new filename.": "এই ফাইলটি আগে থেকেই আছে। অন্য নাম দিন।",
+  "Save UTF-8 copy": "UTF-8 কপি সংরক্ষণ করুন",
+  "Running the text shown in the editor. This file uses {0}. Save a UTF-8 copy to keep all letters on disk.": "এডিটরে দেখানো লেখাটি চালানো হচ্ছে। ফাইলটির এনকোডিং {0}। সব অক্ষর রাখতে UTF-8 কপি সংরক্ষণ করুন।",
+  "The source contains a string of question marks. If you expected letters there, restore or retype the text before saving it as UTF-8.": "সোর্সে পরপর কয়েকটি প্রশ্নচিহ্ন রয়েছে। সেখানে অক্ষর থাকার কথা হলে লেখাটি ফিরিয়ে আনুন বা আবার লিখে UTF-8 হিসেবে সংরক্ষণ করুন।",
+  "Run C++ (UTF-8)": "C++ চালান (UTF-8)",
+  "Compile the current C++ file and show Unicode input and output": "বর্তমান C++ ফাইল কম্পাইল করে ইউনিকোড ইনপুট ও আউটপুট দেখান",
+  "Trace issue": "সমস্যা খুঁজুন",
+  "Open issue log": "সমস্যার লগ খুলুন",
+  "No issue log is available yet.": "এখনও কোনো সমস্যার লগ নেই।",
+  "Open a trusted local folder to run its C++ programs.": "C++ প্রোগ্রাম চালাতে একটি বিশ্বস্ত স্থানীয় ফোল্ডার খুলুন।",
+  "Open a trusted local folder to set up C++ tools.": "C++ টুল সেট আপ করতে একটি বিশ্বস্ত স্থানীয় ফোল্ডার খুলুন।",
+  "The C++ compiler is ready. Open a .cpp file and choose Run C++ (UTF-8).": "C++ কম্পাইলার প্রস্তুত। একটি .cpp ফাইল খুলে C++ চালান (UTF-8) বেছে নিন।",
+  "C++ compiler setup failed. {0}": "C++ কম্পাইলার সেটআপ ব্যর্থ হয়েছে। {0}"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "cppstart-release-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build-time tools for the C++ Start extension",
+  "devDependencies": {
+    "@vscode/vsce": "4.1.1"
+  }
+}

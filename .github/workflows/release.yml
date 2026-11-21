@@ -1,0 +1,147 @@
+name: Release C++ Start
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag, for example v2.2.0
+        required: true
+        type: string
+      marketplace:
+        description: Publish to the Visual Studio Marketplace
+        type: choice
+        default: 'no'
+        options:
+          - 'no'
+          - 'trusted-publishing'
+          - 'publisher-token'
+permissions:
+  contents: read
+concurrency:
+  group: cppstart-release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Validate release tag
+        id: version
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          [[ "$RELEASE_TAG" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)$ ]] || { echo 'Expected a tag such as v2.2.0'; exit 1; }
+          echo "version=${BASH_REMATCH[1]}" >> "$GITHUB_OUTPUT"
+          echo "tag=$RELEASE_TAG" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ steps.version.outputs.tag }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: tools/package-lock.json
+      - name: Build and verify installable extension
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          test "$(node -p "require('./extension/package.json').version")" = "$VERSION"
+          npm ci --prefix tools --ignore-scripts --no-audit --no-fund
+          python3 tools/package.py
+          python3 tools/validate.py "dist/cppstart-$VERSION.vsix"
+          cd dist
+          sha256sum "cppstart-$VERSION.vsix" > SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cppstart-release
+          path: |
+            dist/*.vsix
+            dist/SHA256SUMS.txt
+          if-no-files-found: error
+  github-release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: cppstart-release
+          path: dist
+      - name: Publish the verified GitHub Release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ needs.build.outputs.tag }}
+          VERSION: ${{ needs.build.outputs.version }}
+        working-directory: dist
+        run: |
+          sha256sum -c SHA256SUMS.txt
+          name="cppstart-$VERSION.vsix"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$name" SHA256SUMS.txt --clobber
+          else
+            gh release create "$TAG" "$name" SHA256SUMS.txt --verify-tag --title "C++ Start $VERSION" --notes "Install the VSIX with the VS Code command Extensions: Install from VSIX."
+          fi
+  marketplace-token:
+    if: >-
+      (github.event_name == 'workflow_dispatch' && inputs.marketplace == 'publisher-token') ||
+      (github.event_name == 'push' && vars.CPPSTART_MARKETPLACE_MODE == 'publisher-token')
+    needs: [build, github-release]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ needs.build.outputs.tag }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          name: cppstart-release
+          path: dist
+      - run: npm ci --prefix tools --ignore-scripts --no-audit --no-fund
+      - name: Verify publisher permission and publish the release asset
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          VERSION: ${{ needs.build.outputs.version }}
+        run: |
+          test -n "$VSCE_PAT" || { echo 'Set the repository secret VSCE_PAT for this publishing mode.'; exit 1; }
+          (cd dist && sha256sum -c SHA256SUMS.txt)
+          publisher=$(node -p "require('./extension/package.json').publisher")
+          node tools/node_modules/@vscode/vsce/vsce verify-pat "$publisher"
+          node tools/node_modules/@vscode/vsce/vsce publish --packagePath "dist/cppstart-$VERSION.vsix"
+  marketplace-trusted:
+    if: >-
+      (github.event_name == 'workflow_dispatch' && inputs.marketplace == 'trusted-publishing') ||
+      (github.event_name == 'push' && vars.CPPSTART_MARKETPLACE_MODE == 'trusted-publishing')
+    needs: [build, github-release]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ needs.build.outputs.tag }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          name: cppstart-release
+          path: dist
+      - run: npm ci --prefix tools --ignore-scripts --no-audit --no-fund
+      - name: Publish the release asset with the configured Marketplace trust policy
+        env:
+          VERSION: ${{ needs.build.outputs.version }}
+        run: |
+          (cd dist && sha256sum -c SHA256SUMS.txt)
+          node tools/node_modules/@vscode/vsce/vsce publish --oidc --packagePath "dist/cppstart-$VERSION.vsix"
