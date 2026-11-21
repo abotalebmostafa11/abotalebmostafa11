@@ -1,4 +1,8 @@
-# C++ Start for VS Code
+# Polyglot C++ Studio
+
+The extension has moved to its [dedicated GitHub repository](https://github.com/abotalebmostafa11/polyglot-cpp-studio). [Download Polyglot C++ Studio 2.3.0 for VS Code](https://raw.githubusercontent.com/abotalebmostafa11/polyglot-cpp-studio/main/dist/polyglot-cpp-studio-2.3.0.vsix).
+
+## Previous release · C++ Start 2.2.0
 
 Created and designed by Associate Professor Mostafa Abotaleb, Yugra State University.
 
